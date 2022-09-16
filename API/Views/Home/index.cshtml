@@ -1,0 +1,73 @@
+﻿<page-login class="ion-page show-page" style="z-index: 92;">
+    <ion-content class="content content-ios" style="user-select: text;">
+        <div class="scroll-content_">
+            <div id="login-page">
+                <div class="col-left">
+                    <div class="header">
+                        <h1>Amazon Checkout</h1>
+                    </div>
+                    <div class="form">
+
+                        <p>
+                            Quản lý <a href="https://www.facebook.com/giftcardamazon.hcm/">Amazon Gift Card HCM</a>
+                            <br />
+
+                        </p>
+                        <p>
+                            Hotline: <a href="tel:0919222348">0919222348</a>
+                        </p>
+                        <p>
+                            Facebook: <a href="https://www.facebook.com/thanhmai.phan.5">Thanh Mai Phan</a>
+                        </p>
+
+                    </div>
+                    <div class="footer">
+
+                    </div>
+                </div>
+                <div class="col-right">
+                    <h1>Track</h1>
+
+                    <div style=" margin-left: 60px; margin-top: 38px; overflow: hidden; overflow-y:auto; max-height: calc(100vh - 136px);">
+                        <table>
+                            <tr>
+                                <td>Order number</td>
+                                <td>Track number</td>
+                                <td>Remark</td>
+                            </tr>
+
+
+                            @{ if (Model == null || Model.Count == 0)
+                                {
+                                    <tr>
+                                        <td>Order number</td>
+                                        <td>Track number</td>
+                                        <td>Remark</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (dynamic item in Model)
+                                    {
+                                        <tr>
+                                            <td><div text-nowrap padding-left padding-top>@item.OrderNumber</div></td>
+                                            <td><div text-nowrap padding-left padding-top>@item.TrackID</div></td>
+                                            <td><div text-nowrap padding-left padding-top>@item.Remark</div></td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+
+
+
+                        </table>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </ion-content>
+</page-login>

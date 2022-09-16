@@ -1,0 +1,9 @@
+﻿.vs
+*/bin
+*/obj
+*/Uploads/2021
+*/Uploads/2022
+*.DS_Store
+*.tt
+API/Connections.config
+packages

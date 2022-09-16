@@ -1,0 +1,742 @@
+//------------------------------------------------------------------------------
+// 
+//    www.codeart.vn
+//    hungvq@live.com
+//    (+84)908.061.119
+// 
+//------------------------------------------------------------------------------
+
+namespace ClassLibrary
+{
+    
+    using System;
+    using System.Collections.Generic;
+    
+    
+    public partial class tbl_CRM_PartnerBankAccount
+    {
+        public int IDPartner { get; set; }
+        public int Id { get; set; }
+        public string AccountNo { get; set; }
+        public string BankName { get; set; }
+        public string Beneficiary { get; set; }
+        public string BankBranch { get; set; }
+        //List 0:1
+        public virtual tbl_CRM_Contact tbl_CRM_Contact { get; set; }
+    }
+}
+
+
+namespace DTOModel
+{
+	using System;
+	public partial class DTO_CRM_PartnerBankAccount
+	{
+		public int IDPartner { get; set; }
+		public int Id { get; set; }
+		public string AccountNo { get; set; }
+		public string BankName { get; set; }
+		public string Beneficiary { get; set; }
+		public string BankBranch { get; set; }
+	}
+}
+
+
+namespace BaseBusiness
+{
+    using ClassLibrary;
+    using DTOModel;
+    using Newtonsoft.Json.Linq;
+    using OfficeOpenXml;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Validation;
+    using System.Linq;
+
+    public static partial class BS_CRM_PartnerBankAccount 
+    {
+        public static dynamic getSearch(AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings)
+        {
+            return get(db, IDBranch,StaffID, QueryStrings);
+        }
+
+		public static IQueryable<DTO_CRM_PartnerBankAccount> get(AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings)
+        {
+			var query = _queryBuilder(db, IDBranch, StaffID, QueryStrings);
+            query = _sortBuilder(query, QueryStrings);
+            query = _pagingBuilder(query, QueryStrings);
+
+			return toDTO(query);
+        }
+
+        public static List<ItemModel> getValidateData(AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings)
+        {
+            return get(db, IDBranch, StaffID, QueryStrings).Select(s => new ItemModel { 
+                Id = s.Id, }).ToList();
+        }
+
+        public static string export(ExcelPackage package, AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings)
+        {
+            package.Workbook.Properties.Title = "ART-DMS CRM_PartnerBankAccount";
+            package.Workbook.Properties.Author = "hung.vu@codeart.vn";
+            package.Workbook.Properties.Application = "ART-DMS";
+            package.Workbook.Properties.Company = "A.R.T Distribution";
+
+            ExcelWorkbook workBook = package.Workbook;
+            if (workBook != null)
+            {
+                var ws = workBook.Worksheets.FirstOrDefault();
+                var data = _queryBuilder(db, IDBranch, StaffID, QueryStrings).ToList();
+
+                 
+
+                int SheetColumnsCount, SheetRowCount = 0;
+                SheetColumnsCount = ws.Dimension.End.Column;    // Find End Column
+                SheetRowCount = ws.Dimension.End.Row;           // Find End Row
+
+                int rowid = 5;
+                int firstColInex = 0;
+
+                #region readPropertyList
+                var propList = new List<Tuple<string, string, string, List<ItemModel>>>()
+                    .Select(t => new { ClassName = t.Item1, PropertyName = t.Item2, ReffProperty = t.Item3, ValidateData = t.Item4 }).ToList();
+
+                for (int i = 1; i <= SheetColumnsCount; i++)
+                {
+                    string p = ws.Cells[1, i].Value == null ? "" : ws.Cells[1, i].Text;
+                    string modalPart = p.Split('|')[0];
+                    string queryPart = "";
+                    string className = "";
+                    string reffProperty = "Id";
+
+                    if (p.Contains("|")) //Sample property BRA_Branch?Select=Code&IDType=115|IDBranch
+                        if (modalPart.Contains("?"))
+                        {
+                            className = modalPart.Split('?')[0];
+                            queryPart = modalPart.Split('?')[1];
+                            if (queryPart.Contains("&"))
+                            {
+                                string[] query = queryPart.Split('&');
+                                foreach (var q in query)
+                                {
+                                    string key = "";
+                                    string value = "";
+
+                                    if (q.Contains("="))
+                                    {
+                                        key = q.Split('=')[0];
+                                        value = q.Split('=')[1];
+                                    }
+                                    else
+                                        key = q;
+
+                                    if (QueryStrings.ContainsKey(key))
+                                        QueryStrings.Remove(key);
+
+                                    QueryStrings.Add(key, value);
+                                }
+                            }
+                        }
+                        else
+                            className = modalPart;
+                    
+
+                    List<ItemModel> vdata = null;
+                    if (className != "")
+                    {
+                        Type type = Type.GetType("BaseBusiness.BS_" + className + ", ClassLibrary");
+                        System.Reflection.MethodInfo dynamicGet = type == null ? null : type.GetMethod("getValidateData");
+                        if (dynamicGet != null)
+                            vdata = (List<ItemModel>)dynamicGet.Invoke(null, new object[] { db, IDBranch, StaffID, QueryStrings });
+                        ExcelUtil.SetValidateData(package, i, vdata);
+                    }
+
+                    propList.Add(new
+                    {
+                        ClassName = className,
+                        PropertyName = (p.Contains("|") ? p.Split('|')[1] : p),
+                        ReffProperty = reffProperty,
+                        ValidateData = vdata
+                    });
+                }
+                #endregion
+
+                foreach (var item in data)
+                {
+                    for (int i = 1; i <= SheetColumnsCount; i++)
+                    {
+                        var property = propList[i - 1];
+                        if (!string.IsNullOrEmpty(property.PropertyName) && item.GetType().GetProperties().Any(d => d.Name == property.PropertyName))
+                        {
+                            if (firstColInex == 0)
+                                firstColInex = i;
+
+                            if (property.ClassName != "")
+                            {
+                                ItemModel it = null;
+                                if (property.ReffProperty == "Id")
+                                {
+                                    var val = item.GetType().GetProperties().First(o => o.Name == property.PropertyName).GetValue(item, null);
+                                    if (val != null && property.ValidateData != null)
+                                    {
+                                        int.TryParse(val.ToString(), out int id);
+                                        if (id > 0)
+                                            it = property.ValidateData.FirstOrDefault(d => d.Id == id);
+                                    }
+                                }
+                                else if (property.ReffProperty == "Code")
+                                {
+                                    string code = (string)item.GetType().GetProperties().First(o => o.Name == property.PropertyName).GetValue(item, null);
+                                    if (!string.IsNullOrEmpty(code))
+                                        it = property.ValidateData.FirstOrDefault(d => d.Code == code);
+                                }
+
+                                if (it != null)
+                                    ws.Cells[rowid, i].Value = (property.ReffProperty == "Id"? it.Id.ToString() : it.Code) + ". " + it.Name;
+                                
+                            }
+                            else
+                                ws.Cells[rowid, i].Value = item.GetType().GetProperties().First(o => o.Name == property.PropertyName).GetValue(item, null);
+                        }
+                    }
+                    rowid++;
+                }
+
+                //create a range for the table
+                var range = ws.Cells[4, firstColInex, rowid-1, SheetColumnsCount];
+                range.Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                range.Style.Border.Bottom.Color.SetColor(System.Drawing.Color.FromArgb(235,235,235));
+                range.Style.Border.DiagonalDown = true;
+
+                range.AutoFilter = true;
+                //ws.Cells.AutoFilter = true;
+                //ws.Cells.AutoFitColumns(6, 60);
+
+                package.Save();
+            }
+
+            return package.File.FullName.Substring(package.File.FullName.IndexOf("\\Uploads\\"));
+        }
+
+		public static DTO_CRM_PartnerBankAccount getAnItem(AppEntities db, int IDBranch, int StaffID, int id)
+        {
+            var dbResult = db.tbl_CRM_PartnerBankAccount.Find(id);
+
+			return toDTO(dbResult);
+			
+        }
+		
+
+		public static bool put(AppEntities db, int IDBranch, int StaffID, int Id, dynamic item, string Username, Dictionary<string, string> QueryStrings)
+        {
+            bool result = false;
+            var dbitem = db.tbl_CRM_PartnerBankAccount.Find(Id);
+            
+            if (dbitem != null)
+            {
+                patchDynamicToDB(item, dbitem, Username);
+                try
+                {
+                    db.SaveChanges();
+					result = true;
+                }
+                catch (DbEntityValidationException e)
+                {
+					errorLog.logMessage("put_CRM_PartnerBankAccount",e);
+                    result = false;
+                }
+            }
+            else
+                if (QueryStrings.Any(d => d.Key == "ForceCreate"))
+                    result =  post(db, IDBranch, StaffID, item, Username) != null;
+                
+            return result;
+        }
+
+        public static void patchDynamicToDB(dynamic item, tbl_CRM_PartnerBankAccount dbitem, string Username)
+        {
+            Type type = typeof(tbl_CRM_PartnerBankAccount);
+            List<string> Props = new List<string>();
+            try
+            {
+                if (item.GetType().Name == "JObject")
+                    foreach (JProperty prop in item.Properties())
+                        Props.Add(prop.Name);
+                else
+                    foreach (var prop in item.GetType().GetProperties())
+                        Props.Add(prop.Name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+            foreach (string prop in Props)
+            {
+                if ("|CreatedBy|CreatedDate|ModifiedBy|ModifiedDate|IsDisabled|IsDeleted|".Contains("|" + prop + "|"))
+                    continue;
+
+                var tprop = type.GetProperty(prop);
+                if (tprop != null)
+                {
+                    var value = item.GetType().Name == "JObject" ? item[prop].Value : item.GetType().GetProperty(prop).GetValue(item, null);
+                    if (prop == "Id" && string.IsNullOrEmpty(Convert.ToString(value))) value = 0;
+                    var safeValue = (value == null) ? null : Convert.ChangeType(value, Nullable.GetUnderlyingType(tprop.PropertyType) ?? tprop.PropertyType);
+                    tprop.SetValue(dbitem, safeValue);
+                }
+            }
+
+            
+        }
+
+        public static void patchDTOtoDBValue( DTO_CRM_PartnerBankAccount item, tbl_CRM_PartnerBankAccount dbitem)
+        {
+            if (item == null){
+                dbitem = null;
+                return;
+            }
+            							
+			dbitem.IDPartner = item.IDPartner;							
+			dbitem.AccountNo = item.AccountNo;							
+			dbitem.BankName = item.BankName;							
+			dbitem.Beneficiary = item.Beneficiary;							
+			dbitem.BankBranch = item.BankBranch;        }
+
+		public static DTO_CRM_PartnerBankAccount post(AppEntities db, int IDBranch, int StaffID, dynamic item, string Username)
+        {
+            tbl_CRM_PartnerBankAccount dbitem = new tbl_CRM_PartnerBankAccount();
+            if (item != null)
+            {
+                patchDynamicToDB(item, dbitem, Username);
+                
+								
+                try
+                {
+					db.tbl_CRM_PartnerBankAccount.Add(dbitem);
+                    db.SaveChanges();
+				
+                }
+                catch (DbEntityValidationException e)
+                {
+					errorLog.logMessage("post_CRM_PartnerBankAccount",e);
+                    return null;
+                }
+            }
+            return toDTO(dbitem);
+        }
+
+        public static dynamic import(ExcelPackage package, AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings, string Username)
+        {
+            ExcelWorkbook workBook = package.Workbook;
+            int errCount = 0;
+            var errList = new List<Tuple<int, int, string>>().Select(t => new { Id = t.Item1, Line = t.Item2, Message = t.Item3 }).ToList();
+            
+            if (workBook != null)
+            {
+                Type type = Type.GetType("BaseBusiness.BS_CRM_PartnerBankAccount, ClassLibrary");
+                var ws = workBook.Worksheets.FirstOrDefault();
+                int SheetColumnsCount = ws.Dimension.End.Column;
+                int SheetRowCount = ws.Dimension.End.Row;
+                int firstRow = 5;
+                int firstColIndex = 1;
+                
+                for (int r = firstRow; r <= SheetRowCount; r++){
+                    dynamic it = new Newtonsoft.Json.Linq.JObject();
+                    bool isBreak = false;
+                    for (int c = firstColIndex; c <= SheetColumnsCount; c++)
+                    {
+                        dynamic convert = new Newtonsoft.Json.Linq.JObject();
+                        var target = new tbl_CRM_PartnerBankAccount();
+                        string property = ws.Cells[1, c].Value == null ? "" : ws.Cells[1, c].Text;
+                        if(!string.IsNullOrEmpty(property))
+                        {
+                            var v = ws.Cells[r, c].Value == null ? "" : ws.Cells[r, c].Value.ToString();
+                            try
+                            {
+                                if (property.Contains("|"))
+                                {
+                                    it[property] = v;
+                                    property = property.Split('|')[1];
+                                    if (v.Contains("."))
+                                        v = v.Split('.')[0];
+                                }
+
+                                convert[property] = string.IsNullOrEmpty(v) ? null : v;
+                                patchDynamicToDB(convert, target, Username);
+                                System.Reflection.MethodInfo validate = type.GetMethod("validate");
+                                if (validate != null) {
+                                    string message = (string)validate.Invoke(null, new object[] { target, property, db, IDBranch, StaffID, QueryStrings, Username });
+
+                                    if (message != "OK")
+                                    {
+                                        errCount++;
+                                        errList.Add(new { Id = errCount, Line = r, Message = message });
+                                        ExcelUtil.NoteToWorkSheet(ws, r, c, message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                                        isBreak = true;
+                                        continue;
+                                    }
+                                }
+                                it[property] = convert[property];
+                            }
+                            catch (Exception ex)
+                            {
+                                errCount++;
+                                errList.Add(new { Id = errCount, Line = r, Message = ex.Message });
+                                ExcelUtil.NoteToWorkSheet(ws, r, c, ex.Message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                                isBreak = true;
+                                continue;
+                            }
+                        }
+                    }
+                    if (isBreak) continue;
+                    
+                    tbl_CRM_PartnerBankAccount dbitem = new tbl_CRM_PartnerBankAccount();
+                    if (it.Id == null || string.IsNullOrEmpty(it.Id.Value) || it.Id == "0")
+                    {
+                        dbitem = new tbl_CRM_PartnerBankAccount();
+                                            }
+                    else
+                    {
+                        dbitem = db.tbl_CRM_PartnerBankAccount.Find((int)it.Id);
+                    }
+
+                    if (dbitem == null)
+                    {
+                        errCount++;
+                        string message = "Không tìm được dữ liệu (Id: " + it.Id + ")";
+                        errList.Add(new { Id = errCount, Line = r, Message = message });
+                        ExcelUtil.NoteToWorkSheet(ws, r, firstColIndex, message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                        continue;
+                    }
+                    try
+                    {
+                        patchDynamicToDB(it, dbitem, Username);
+                        System.Reflection.MethodInfo fillReference = type.GetMethod("fillReference");
+                        if (fillReference != null)
+                            fillReference.Invoke(null, new object[] { dbitem, it, db, IDBranch, StaffID, QueryStrings, Username });
+                        
+                        if (dbitem.Id == 0) db.tbl_CRM_PartnerBankAccount.Add(dbitem);
+                    }
+                    catch (Exception ex)
+                    {
+                        errCount++;
+                        errList.Add(new { Id = errCount, Line = r, Message = ex.Message });
+                        ExcelUtil.NoteToWorkSheet(ws, r, firstColIndex, ex.Message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                        continue;
+                    }
+                    
+                    
+                  
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+                {
+                    errCount++;
+                    errList.Add(new { Id = errCount, Line = firstRow, Message = e.Message });
+                    ExcelUtil.NoteToWorkSheet(ws, firstRow, firstColIndex, e.Message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                }
+                catch (DbEntityValidationException e)
+                {
+                    errorLog.logMessage("post_CRM_PartnerBankAccount",e);
+                }
+                catch (Exception e)
+                {
+                    errCount++;
+                    errList.Add(new { Id = errCount, Line = firstRow, Message = e.Message });
+                    ExcelUtil.NoteToWorkSheet(ws, firstRow, firstColIndex, e.Message, System.Drawing.Color.Red, System.Drawing.Color.White);
+                }
+
+            }
+            if (errCount > 0)
+            {
+                package.Save();
+            }
+
+            return new
+            {
+                ErrorList = errList,
+                FileUrl = package.File.FullName.Substring(package.File.FullName.IndexOf("\\Uploads\\")).Replace("\\", "/")
+            };
+        }
+
+		public static bool delete(AppEntities db, string ids, string Username)
+        {
+			bool result = false;
+
+            var IDList = ids.Replace("[", "").Replace("]", "").Split(',');
+            List<int?> IDs = new List<int?>();
+            foreach (var item in IDList)
+                if (int.TryParse(item, out int i))
+                    IDs.Add(i);
+                else if (item == "null")
+                    IDs.Add(null);
+            if (IDs.Count == 0){
+                return result;
+            }
+
+            var dbitems = db.tbl_CRM_PartnerBankAccount.Where(d => IDs.Contains(d.Id));
+            var updateDate = DateTime.Now;
+            List<int?> IDBranches = new List<int?>();
+
+            foreach (var dbitem in dbitems)
+            {
+			
+				db.tbl_CRM_PartnerBankAccount.Remove(dbitem);
+			            
+                
+            }
+
+            try
+            {
+                db.SaveChanges();
+                result = true;
+			
+                BS_Version.update_Version(db, null, "DTO_CRM_PartnerBankAccount", updateDate, Username);
+			
+            }
+            catch (DbEntityValidationException e)
+            {
+				errorLog.logMessage("delete_CRM_PartnerBankAccount",e);
+                result = false;
+            }
+
+            return result;
+        }
+
+        public static bool disable(AppEntities db, string ids, bool isDisable, string Username)
+        {
+            bool result = false;
+            
+            return result;
+        }
+
+		
+		//---//
+		public static bool check_Exists(AppEntities db, int id)
+		{
+            			return db.tbl_CRM_PartnerBankAccount.Any(e => e.Id == id);
+            
+		}
+		
+		//---//
+		public static IQueryable<DTO_CRM_PartnerBankAccount> toDTO(IQueryable<tbl_CRM_PartnerBankAccount> query)
+        {
+			return query
+			.Select(s => new DTO_CRM_PartnerBankAccount(){							
+				IDPartner = s.IDPartner,							
+				Id = s.Id,							
+				AccountNo = s.AccountNo,							
+				BankName = s.BankName,							
+				Beneficiary = s.Beneficiary,							
+				BankBranch = s.BankBranch,					
+			});//;
+                              
+        }
+
+		public static DTO_CRM_PartnerBankAccount toDTO(tbl_CRM_PartnerBankAccount dbResult)
+        {
+			if (dbResult != null)
+			{
+				return new DTO_CRM_PartnerBankAccount()
+				{							
+					IDPartner = dbResult.IDPartner,							
+					Id = dbResult.Id,							
+					AccountNo = dbResult.AccountNo,							
+					BankName = dbResult.BankName,							
+					Beneficiary = dbResult.Beneficiary,							
+					BankBranch = dbResult.BankBranch,
+				};
+			}
+			else
+				return null; 
+        }
+
+		public static IQueryable<tbl_CRM_PartnerBankAccount> _queryBuilder(AppEntities db, int IDBranch, int StaffID, Dictionary<string, string> QueryStrings)
+        {
+            
+			IQueryable<tbl_CRM_PartnerBankAccount> query = db.tbl_CRM_PartnerBankAccount.AsNoTracking();//;
+			
+
+			//Query keyword
+
+
+
+			//Query IDPartner (int)
+			if (QueryStrings.Any(d => d.Key == "IDPartner"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "IDPartner").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.IDPartner));
+            }
+
+			//Query Id (int)
+			if (QueryStrings.Any(d => d.Key == "Id"))
+            {
+                var IDList = QueryStrings.FirstOrDefault(d => d.Key == "Id").Value.Replace("[", "").Replace("]", "").Split(',');
+                List<int> IDs = new List<int>();
+                foreach (var item in IDList)
+                    if (int.TryParse(item, out int i))
+                        IDs.Add(i);
+                if (IDs.Count > 0)
+                    query = query.Where(d => IDs.Contains(d.Id));
+            }
+
+			//Query AccountNo (string)
+			if (QueryStrings.Any(d => d.Key == "AccountNo_eq") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "AccountNo_eq").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "AccountNo_eq").Value;
+                query = query.Where(d=>d.AccountNo == keyword);
+            }
+            if (QueryStrings.Any(d => d.Key == "AccountNo") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "AccountNo").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "AccountNo").Value;
+                query = query.Where(d=>d.AccountNo.Contains(keyword));
+            }
+            
+
+			//Query BankName (string)
+			if (QueryStrings.Any(d => d.Key == "BankName_eq") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "BankName_eq").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "BankName_eq").Value;
+                query = query.Where(d=>d.BankName == keyword);
+            }
+            if (QueryStrings.Any(d => d.Key == "BankName") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "BankName").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "BankName").Value;
+                query = query.Where(d=>d.BankName.Contains(keyword));
+            }
+            
+
+			//Query Beneficiary (string)
+			if (QueryStrings.Any(d => d.Key == "Beneficiary_eq") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Beneficiary_eq").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Beneficiary_eq").Value;
+                query = query.Where(d=>d.Beneficiary == keyword);
+            }
+            if (QueryStrings.Any(d => d.Key == "Beneficiary") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "Beneficiary").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "Beneficiary").Value;
+                query = query.Where(d=>d.Beneficiary.Contains(keyword));
+            }
+            
+
+			//Query BankBranch (string)
+			if (QueryStrings.Any(d => d.Key == "BankBranch_eq") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "BankBranch_eq").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "BankBranch_eq").Value;
+                query = query.Where(d=>d.BankBranch == keyword);
+            }
+            if (QueryStrings.Any(d => d.Key == "BankBranch") && !string.IsNullOrEmpty(QueryStrings.FirstOrDefault(d => d.Key == "BankBranch").Value))
+            {
+                var keyword = QueryStrings.FirstOrDefault(d => d.Key == "BankBranch").Value;
+                query = query.Where(d=>d.BankBranch.Contains(keyword));
+            }
+            
+            return query;
+        }
+		
+        public static IQueryable<tbl_CRM_PartnerBankAccount> _sortBuilder(IQueryable<tbl_CRM_PartnerBankAccount> query, Dictionary<string, string> QueryStrings)
+        {
+            if (QueryStrings.Any(d => d.Key == "SortBy"))
+            {
+                var sorts = QueryStrings.FirstOrDefault(d => d.Key == "SortBy").Value.Replace("[", "").Replace("]", "").Split(',');
+                
+                foreach (var item in sorts)
+                    if (!string.IsNullOrEmpty(item))
+                    {
+                        var ordered = query as IOrderedQueryable<tbl_CRM_PartnerBankAccount>;
+                        bool isOrdered = ordered.ToString().IndexOf("ORDER BY") !=-1;
+
+                        switch (item)
+                        {
+							case "IDPartner":
+								query = isOrdered ? ordered.ThenBy(o => o.IDPartner) : query.OrderBy(o => o.IDPartner);
+								 break;
+							case "IDPartner_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.IDPartner) : query.OrderByDescending(o => o.IDPartner);
+                                break;
+							case "Id":
+								query = isOrdered ? ordered.ThenBy(o => o.Id) : query.OrderBy(o => o.Id);
+								 break;
+							case "Id_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.Id) : query.OrderByDescending(o => o.Id);
+                                break;
+							case "AccountNo":
+								query = isOrdered ? ordered.ThenBy(o => o.AccountNo) : query.OrderBy(o => o.AccountNo);
+								 break;
+							case "AccountNo_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.AccountNo) : query.OrderByDescending(o => o.AccountNo);
+                                break;
+							case "BankName":
+								query = isOrdered ? ordered.ThenBy(o => o.BankName) : query.OrderBy(o => o.BankName);
+								 break;
+							case "BankName_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.BankName) : query.OrderByDescending(o => o.BankName);
+                                break;
+							case "Beneficiary":
+								query = isOrdered ? ordered.ThenBy(o => o.Beneficiary) : query.OrderBy(o => o.Beneficiary);
+								 break;
+							case "Beneficiary_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.Beneficiary) : query.OrderByDescending(o => o.Beneficiary);
+                                break;
+							case "BankBranch":
+								query = isOrdered ? ordered.ThenBy(o => o.BankBranch) : query.OrderBy(o => o.BankBranch);
+								 break;
+							case "BankBranch_desc":
+                                query = isOrdered ? ordered.ThenByDescending(o => o.BankBranch) : query.OrderByDescending(o => o.BankBranch);
+                                break;
+                            default:
+                                if(!isOrdered)
+                                    query = query.OrderBy(o => o.Id);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        query = query.OrderBy(o => o.Id);
+                    }
+            }
+            else
+            {
+                query = query.OrderBy(o => o.Id);
+            }
+
+            return query;
+        }
+
+        public static IQueryable<tbl_CRM_PartnerBankAccount> _pagingBuilder(IQueryable<tbl_CRM_PartnerBankAccount> query, Dictionary<string, string> QueryStrings)
+        {
+            int skip = 0;
+            int take = 200;
+            if (QueryStrings.Any(d => d.Key == "Skip"))
+            {
+                int.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "Skip").Value, out skip);
+            }
+            if (QueryStrings.Any(d => d.Key == "Take"))
+            {
+                int.TryParse(QueryStrings.FirstOrDefault(d => d.Key == "Take").Value, out take);
+            }
+
+            query = query.Skip(skip).Take(take);
+            return query;
+        }
+
+    }
+
+}
+
+
+
+
+
+

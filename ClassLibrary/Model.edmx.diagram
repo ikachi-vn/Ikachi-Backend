@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe521cf2abf8474b9564c8b08d2c8d43" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="AppModel.tbl_AC_JournalEntry" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_AC_JournalEntryRow" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_AC_PostingPeriod" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BANK_IncomingPayment" Width="1.5" PointX="36.25" PointY="253.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BANK_IncomingPaymentDetail" Width="1.5" PointX="38.5" PointY="267" />
+        <EntityTypeShape EntityType="AppModel.tbl_BANK_PaymentTerm" Width="1.5" PointX="3" PointY="292.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BC_RevenueExpenditureComponent" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BC_RevenueExpenditureRefCode" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Finance_BalanceSheetCategory" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Finance_BalanceSheets" Width="1.5" PointX="12" PointY="415.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Finance_CashFlow" Width="1.5" PointX="12" PointY="250" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Finance_IncomeStatement" Width="1.5" PointX="12" PointY="401.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Finance_Management" Width="1.5" PointX="12" PointY="387" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Operating_MarketResearch" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_Oppotunity" Width="1.5" PointX="12" PointY="443.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_ReportTemplate" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BI_ReportTemplateDetail" Width="1.5" PointX="18.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_BP_Partner" Width="1.5" PointX="7.5" PointY="307" />
+        <EntityTypeShape EntityType="AppModel.tbl_BRA_Branch" Width="1.5" PointX="9.75" PointY="299.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_BSC_RevenueTarget" Width="1.5" PointX="12" PointY="391.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Activity" Width="1.5" PointX="31.75" PointY="292" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Attendance" Width="1.5" PointX="12.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_BusinessPartnerGroup" Width="1.5" PointX="21" PointY="303.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Campaign" Width="1.5" PointX="17.25" PointY="287.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_CampaignMember" Width="1.5" PointX="25.5" PointY="296.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Config" Width="1.5" PointX="12" PointY="254.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Contact" Width="1.5" PointX="5.25" PointY="287.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_ContactReference" Width="1.5" PointX="7.5" PointY="368.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Contract" Width="1.5" PointX="34" PointY="294.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Customer" Width="1.5" PointX="7.5" PointY="226.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Lead" Width="1.5" PointX="28.5" PointY="280.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Opportunity" Width="1.5" PointX="30.75" PointY="298.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Outlets" Width="1.5" PointX="7.5" PointY="244.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_PartnerAddress" Width="1.5" PointX="7.5" PointY="220.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_PartnerBankAccount" Width="1.5" PointX="7.5" PointY="241.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_PersonInfo" Width="1.5" PointX="7.5" PointY="372" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Quotation" Width="1.5" PointX="37" PointY="295.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_Route" Width="1.5" PointX="19.5" PointY="368.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_CRM_RouteDetail" Width="1.5" PointX="21.75" PointY="328" />
+        <EntityTypeShape EntityType="AppModel.tbl_FINANCE_GeneralLedger" Width="1.5" PointX="14.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_FINANCE_TaxDefinition" Width="1.5" PointX="16.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_DeductionOnSalary" Width="1.5" PointX="23.25" PointY="285.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PayrollElement" Width="1.5" PointX="31.5" PointY="274" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PayrollPaySheetMaster" Width="1.5" PointX="23.25" PointY="273.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PayrollPaySheetMasterSalaryDecision" Width="1.5" PointX="28.5" PointY="267.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PersonalIncomePaymentProcess" Width="1.5" PointX="23.25" PointY="299.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolAllowance" Width="1.5" PointX="9.75" PointY="292" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolAllowanceApplyFor" Width="1.5" PointX="12" PointY="306.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolCompulsoryInsurance" Width="1.5" PointX="24" PointY="251.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolCompulsoryInsuranceApplyFor" Width="1.5" PointX="15" PointY="311.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolicyHoliday" Width="1.5" PointX="18.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolicyPaidTimeOff" Width="1.5" PointX="14.75" PointY="7" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolicyPaidTimeOffGrantsByLengthOfServices" Width="1.5" PointX="17" PointY="7.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolWelfare" Width="1.5" PointX="14.25" PointY="463.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_PolWelfareApplyFor" Width="1.5" PointX="16.5" PointY="381.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_Shift" Width="1.5" PointX="19.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_Staff" Width="1.5" PointX="12" PointY="267.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_Staff_ConcurrentPosition" Width="1.5" PointX="14.25" PointY="470.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffAcademicLevel" Width="1.5" PointX="20.25" PointY="285.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffAddress" Width="1.5" PointX="14.25" PointY="362" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffAllowance" Width="1.5" PointX="29.25" PointY="272.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffAnotherSkill" Width="1.5" PointX="17.25" PointY="274" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffAppointDecision" Width="1.5" PointX="14.25" PointY="298.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffBank" Width="1.5" PointX="17.25" PointY="261.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffBasicInfo" Width="1.5" PointX="17.25" PointY="267.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffBounusOnSalary" Width="1.5" PointX="20.25" PointY="279.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffCompulsoryInsurance" Width="1.5" PointX="26.25" PointY="260.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffConcurrentProbationryPosition" Width="1.5" PointX="17.25" PointY="300" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffCurrentWorking" Width="1.5" PointX="14.25" PointY="273.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffDeductionOnSalary" Width="1.5" PointX="4.75" PointY="20.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffFamily" Width="1.5" PointX="26.25" PointY="280.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffForeignLanguage" Width="1.5" PointX="23.25" PointY="259.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffIdentityCardAndPIT" Width="1.5" PointX="17.25" PointY="279.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffInsurancePaymentProcess" Width="1.5" PointX="14.25" PointY="289.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffInternetAccount" Width="1.5" PointX="14.25" PointY="443.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffLaborContract" Width="1.5" PointX="26.25" PointY="272.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffLearningProcess" Width="1.5" PointX="14.25" PointY="261.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffPhone" Width="1.5" PointX="14.25" PointY="432.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffPTOEnrollment" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffRecruitmentInfo" Width="1.5" PointX="23.25" PointY="292.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffResignationInfo" Width="1.5" PointX="23.25" PointY="279.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffSalaryDecision" Width="1.5" PointX="20.25" PointY="265.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffSpecializedField" Width="1.5" PointX="14.25" PointY="268" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffSpecializedSkill" Width="1.5" PointX="23.25" PointY="267.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffStaffAndFamilyJob" Width="1.5" PointX="31.5" PointY="279" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffTrainingProcess" Width="1.5" PointX="24" PointY="241.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffTrainingProcessSkill" Width="1.5" PointX="26.25" PointY="247" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffWelfare" Width="1.5" PointX="19.75" PointY="320" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffWorkExperience" Width="1.5" PointX="20.25" PointY="291.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffWorkingDiary" Width="1.5" PointX="20.25" PointY="273.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_TimeSheetCheckInCode" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_TimeSheetLog" Width="1.5" PointX="14.25" PointY="280.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_ContractTemplate" Width="1.5" PointX="24" PointY="247.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_Country" Width="1.5" PointX="15" PointY="253.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_District" Width="1.5" PointX="19.5" PointY="231" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_ElementOfSalary" Width="1.5" PointX="29.25" PointY="263.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_General" Width="1.5" PointX="21" PointY="242.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_PayPeriod" Width="1.5" PointX="21" PointY="236.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_Province" Width="1.5" PointX="17.25" PointY="230.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_LIST_Ward" Width="1.5" PointX="21.75" PointY="231" />
+        <EntityTypeShape EntityType="AppModel.tbl_MR_CompetiorOrder" Width="1.5" PointX="8" PointY="15" />
+        <EntityTypeShape EntityType="AppModel.tbl_MR_TrackingCompetitor" Width="1.5" PointX="5.75" PointY="15.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_OST_Office" Width="1.5" PointX="9.75" PointY="286" />
+        <EntityTypeShape EntityType="AppModel.tbl_OST_OfficeGate" Width="1.5" PointX="12" PointY="285.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_PM_Task" Width="1.5" PointX="34" PointY="287.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PR_PromotionTracking" Width="1.5" PointX="8.75" PointY="20.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_BillOfMaterials" Width="1.5" PointX="19.5" PointY="347.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_BillOfMaterialsDetail" Width="1.5" PointX="24.75" PointY="333.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_ItemInVendor" Width="1.5" PointX="25.5" PointY="308.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_PROD_MRP" Width="1.5" PointX="20.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_PURCHASE_Order" Width="1.5" PointX="12" PointY="299.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_PURCHASE_OrderDetail" Width="1.5" PointX="20.5" PointY="311.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SALE_Order" Width="1.5" PointX="36.25" PointY="260.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_SALE_OrderDetail" Width="1.5" PointX="39.5" PointY="291.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SHIFT_TimeSheet" Width="1.5" PointX="20.25" PointY="297.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SHIP_Shipment" Width="1.5" PointX="16.5" PointY="371" />
+        <EntityTypeShape EntityType="AppModel.tbl_SHIP_ShipmentDebt" Width="1.5" PointX="41.5" PointY="318.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_SHIP_ShipmentDetail" Width="1.5" PointX="38.5" PointY="317.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_SHIP_Vehicle" Width="1.5" PointX="14.25" PointY="474.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Apps" Width="1.5" PointX="11.75" PointY="1" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Config" Width="1.5" PointX="12" PointY="364.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_ConfigOption" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Currency" Width="1.5" PointX="20.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_DataPermissionList" Width="1.5" PointX="21.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Form" Width="1.5" PointX="12.75" PointY="323.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_FormGroup" Width="1.5" PointX="14" PointY="1.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_GlobalConfig" Width="1.5" PointX="12" PointY="410.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Log" Width="1.5" PointX="0.75" PointY="22.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_PermissionList" Width="1.5" PointX="15" PointY="307.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Role" Width="1.5" PointX="12" PointY="318.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_RuningNo" Width="1.5" PointX="12" PointY="396.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_SAP_Databases" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Status" Width="1.5" PointX="34" PointY="271.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_SyncJob" Width="1.5" PointX="22.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_Type" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_UserDevice" Width="1.5" PointX="22.75" PointY="14.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_UserSetting" Width="1.5" PointX="20.75" PointY="22.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_UserVoice" Width="1.5" PointX="22.75" PointY="22.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_SYS_VeifyPhoneNumber" Width="1.5" PointX="23.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_Version" Width="1.5" PointX="16.75" PointY="23.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_Category" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_Content" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_Content_Tag" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_ContentInCategory" Width="1.5" PointX="24.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WEB_Tag" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_Branches" Width="1.5" PointX="24.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_CashFlows" Width="1.5" PointX="24.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_ContactGroups" Width="1.5" PointX="24.75" PointY="22.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_Contacts" Width="1.5" PointX="25.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_GeneralLedgers" Width="1.5" PointX="2.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_Invoices" Width="1.5" PointX="4.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_ItemGroups" Width="1.5" PointX="6.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_ItemPriceLists" Width="1.5" PointX="26.75" PointY="7.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_Items" Width="1.5" PointX="8.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_ItemUoM" Width="1.5" PointX="10.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_JournalEntries" Width="1.5" PointX="12.75" PointY="26.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_JournalEntryRows" Width="1.5" PointX="26.75" PointY="13.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_PostingPeriods" Width="1.5" PointX="26.75" PointY="21.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_PriceLists" Width="1.5" PointX="27.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_Staff" Width="1.5" PointX="18.75" PointY="27.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_UoM" Width="1.5" PointX="20.75" PointY="27.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WH_VTB_Statements" Width="1.5" PointX="22.75" PointY="27.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Adjustment" Width="1.5" PointX="40" PointY="305.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_AdjustmentDetail" Width="1.5" PointX="42.25" PointY="295.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Carrier" Width="1.5" PointX="7.5" PointY="212.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Carton" Width="1.5" PointX="12" PointY="8.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_CartonGroup" Width="1.5" PointX="9.75" PointY="9.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Item" Width="1.5" PointX="17.25" PointY="315.875" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ItemGroup" Width="1.5" PointX="12" PointY="336.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ItemInLocation" Width="1.5" PointX="29.25" PointY="292.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ItemInWarehouseConfig" Width="1.5" PointX="31.5" PointY="285" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ItemUoM" Width="1.5" PointX="22.5" PointY="319.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_LicencePlateNumber" Width="1.5" PointX="36" PointY="279.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Location" Width="1.5" PointX="18" PointY="305.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Lot" Width="1.5" PointX="31.5" PointY="265" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_LotAttribute" Width="1.5" PointX="33.75" PointY="267.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_LotLPNLocation" Width="1.5" PointX="42.25" PointY="283" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PriceList" Width="1.5" PointX="0.75" PointY="292.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PriceListDetail" Width="1.5" PointX="27.75" PointY="308.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PriceListVersion" Width="1.5" PointX="3" PointY="299.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PriceListVersionDetail" Width="1.5" PointX="24.75" PointY="314.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PutawayStrategy" Width="1.5" PointX="12" PointY="449.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_PutawayStrategyDetail" Width="1.5" PointX="14.25" PointY="449.125" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Receipt" Width="1.5" PointX="20.25" PointY="256.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ReceiptDetail" Width="1.5" PointX="27.75" PointY="298.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_ReceiptPalletization" Width="1.5" PointX="33.75" PointY="278.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Storer" Width="1.5" PointX="7.5" PointY="231.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_TaskDispatchStrategy" Width="1.5" PointX="12" PointY="419.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_TaskDispatchStrategyDetail" Width="1.5" PointX="14.25" PointY="419.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Transaction" Width="1.5" PointX="39.25" PointY="279" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_UoM" Width="1.5" PointX="20.25" PointY="335.5" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_UoMGroup" Width="1.5" PointX="24.75" PointY="27.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Vendor" Width="1.5" PointX="7.5" PointY="216.375" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_WarehouseInfo" Width="1.5" PointX="12" PointY="424.25" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_WavePlanning" Width="1.5" PointX="12" PointY="405.75" />
+        <EntityTypeShape EntityType="AppModel.tbl_WMS_Zone" Width="1.5" PointX="23.25" PointY="306.625" />
+        <EntityTypeShape EntityType="AppModel.tbl_HRM_StaffConcurrentPosition" Width="1.5" PointX="26.25" PointY="291.625" />
+        <AssociationConnector Association="AppModel.FK_tbl_BANK_IncomingPaymentDetail_tbl_BANK_IncomingPayment" />
+        <AssociationConnector Association="AppModel.FK_tbl_BANK_IncomingPaymentDetail_tbl_SALE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_BANK_PaymentTerm_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BANK_PaymentTerm_tbl_WMS_PriceList" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_BANK_PaymentTerm" />
+        <AssociationConnector Association="AppModel.FK_tbl_BC_RevenueExpenditureComponent_tbl_BC_RevenueExpenditureComponent" />
+        <AssociationConnector Association="AppModel.FK_tbl_BI_BalanceSheets_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BI_Finance_CashFlow_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BI_Finance_IncomeStatement_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BI_Finance_Management_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BI_Oppotunity_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BP_Partner_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_BRA_Branch_tbl_BP_Partner" />
+        <AssociationConnector Association="AppModel.FK_ApplyJobTitle" />
+        <AssociationConnector Association="AppModel.FK_Branch_PersonalIncomePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_ConcurrentDepartment" />
+        <AssociationConnector Association="AppModel.FK_ConcurrentJobTitle" />
+        <AssociationConnector Association="AppModel.FK_ConcurrentProbationryDepartment" />
+        <AssociationConnector Association="AppModel.FK_ConcurrentProbationryJobTitle" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_SYS_CauHinhHeThong_dbo_tbl_KhachHang_IDBranch" />
+        <AssociationConnector Association="AppModel.FK_Department" />
+        <AssociationConnector Association="AppModel.FK_Department_AppointDecision" />
+        <AssociationConnector Association="AppModel.FK_Department_InsurancePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_JobTitle" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_AllowanceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_AppointDecision" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_CompulsoryInsuranceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_InsurancePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_PersonalIncomePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_WelfareApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitle_WorkExperience" />
+        <AssociationConnector Association="AppModel.FK_MainProbationryJobTitle" />
+        <AssociationConnector Association="AppModel.FK_tbl_BRA_Branch_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_BRA_Role_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_BSC_RevenueTarget_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_BusinessPartnerGroup_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Config_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_MarketingCampaign_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Opportunity_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Route_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Route_tbl_BRA_Warehouse" />
+        <AssociationConnector Association="AppModel.FK_tbl_HRM_Staff_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_PURCHASE_Order_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIFT_TimeSheet_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_BRA_Warehouse" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_Config_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_PermissionList_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_RuningNo_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Item_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemGroup_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInLocation_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Location_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceList_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PutawayStrategy_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_TaskDispatchStrategy_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_BRA_Branch1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_WarehouseInfo_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_WavePlanning_tbl_BRA_Branch" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Zone_tbl_BRA_Partner" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Activity_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Activity_tbl_CRM_Lead" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Activity_tbl_CRM_Opportunity" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_BusinessPartnerGroup_tbl_WMS_PriceList" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_CRM_BusinessPartnerGroup" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Campaign_tbl_CRM_Campaign" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Campaign_tbl_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_CampaignMember_tbl_CRM_Campaign" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Lead_tbl_CRM_Campaign" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Opportunity_tbl_CRM_Campaign" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_CampaignMember_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_CampaignMember_tbl_CRM_Lead" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_Reference_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_Reference_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_WMS_PriceList" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contact_tbl_WMS_PriceList1" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_ContactAddress_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contract_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Customer_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Opportunity_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Outlets_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_PartnerBankAccount_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_PersonInfo_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Quote_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_RouteDetail_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_ItemInVendor_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_PURCHASE_Order_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_PURCHASE_Order_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Carrier_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_CRM_Contact2" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Storer_tbl_CRM_Contact" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Vendor_tbl_CRM_Contact1" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contract_tbl_CRM_Opportunity" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Contract_tbl_CRM_Quote" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_CRM_Contract" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Lead_tbl_HRM_STAFF_NhanSu" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Opportunity_tbl_CRM_Marketing_Lead" />
+        <AssociationConnector Association="AppModel.FK_tbl_PM_task_tbl_CRM_Lead" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Quote_tbl_CRM_Opportunity" />
+        <AssociationConnector Association="AppModel.FK_tbl_PM_task_tbl_CRM_Opportunity" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_CRM_PartnerAddress" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Route_tbl_HRM_Seller" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Route_tbl_HRM_Shipper" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_Route_tbl_SHIP_Vehicle" />
+        <AssociationConnector Association="AppModel.FK_tbl_CRM_RouteDetail_tbl_CRM_Route" />
+        <AssociationConnector Association="AppModel.FK_Deduction" />
+        <AssociationConnector Association="AppModel.FK_PayPeriod_DeductionOnSalary" />
+        <AssociationConnector Association="AppModel.FK_Staff_DeductionOnSalary" />
+        <AssociationConnector Association="AppModel.FK_ElementOfSalary_PayrollElement" />
+        <AssociationConnector Association="AppModel.FK_PaySheetMaster" />
+        <AssociationConnector Association="AppModel.FK_PayPeriod_PaySheetMaster" />
+        <AssociationConnector Association="AppModel.FK_PaySheetMaster_Payroll" />
+        <AssociationConnector Association="AppModel.FK_Staff_PaySheetMaster" />
+        <AssociationConnector Association="AppModel.FK_SalaryDecision_Payroll" />
+        <AssociationConnector Association="AppModel.FK_PayPeriod_PersonalIncomePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_Staff_PersonalIncomePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_AllowanceType" />
+        <AssociationConnector Association="AppModel.FK_Frequency" />
+        <AssociationConnector Association="AppModel.FK_PolAllowance_AllowanceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitleCategory_AllowanceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_LevelOfManagement_AllowanceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_POLAllowanceApplyFor_Allowance" />
+        <AssociationConnector Association="AppModel.FK_StaffType_AllowanceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_PolCompulsoryInsurance" />
+        <AssociationConnector Association="AppModel.FK_StaffCompulsoryInsurance" />
+        <AssociationConnector Association="AppModel.FK_CompulsoryInsuranceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitleCategory_CompulsoryInsuranceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_LevelOfManagement_CompulsoryInsuranceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_StaffType_CompulsoryInsuranceApplyFor" />
+        <AssociationConnector Association="AppModel.FK_tbl_HRM_PolicyPaidTimeOffGrantsByLengthOfServices_tbl_HRM_PolicyPaidTimeOff" />
+        <AssociationConnector Association="AppModel.FK_DecisionSignedBy_POL_Welfare" />
+        <AssociationConnector Association="AppModel.FK_Welfare_POL_WelfareApplyFor" />
+        <AssociationConnector Association="AppModel.FK_JobTitleCategory_WelfareApplyFor" />
+        <AssociationConnector Association="AppModel.FK_LevelOfManagement_WelfareApplyFor" />
+        <AssociationConnector Association="AppModel.FK_POLWelfareApplyFor_Welfare" />
+        <AssociationConnector Association="AppModel.FK_StaffType_WelfareApplyFor" />
+        <AssociationConnector Association="AppModel.FK_ContractSignedBy" />
+        <AssociationConnector Association="AppModel.FK_DecisionSignedBy_Allowance" />
+        <AssociationConnector Association="AppModel.FK_DecisionSignedBy_ResignationInfo" />
+        <AssociationConnector Association="AppModel.FK_DecisionSignedBy_SalaryDecision" />
+        <AssociationConnector Association="AppModel.FK_DecisionSignedBy_Welfare" />
+        <AssociationConnector Association="AppModel.FK_DirectManager" />
+        <AssociationConnector Association="AppModel.FK_IndirectManager" />
+        <AssociationConnector Association="AppModel.FK_ProbationryDecisionSignedBy" />
+        <AssociationConnector Association="AppModel.FK_Staff" />
+        <AssociationConnector Association="AppModel.FK_Staff_Allowance" />
+        <AssociationConnector Association="AppModel.FK_Staff_AnotherSkill" />
+        <AssociationConnector Association="AppModel.FK_Staff_AppointDecision" />
+        <AssociationConnector Association="AppModel.FK_Staff_Bank" />
+        <AssociationConnector Association="AppModel.FK_Staff_BounusOnSalary" />
+        <AssociationConnector Association="AppModel.FK_Staff_ConcurrentPosition" />
+        <AssociationConnector Association="AppModel.FK_Staff_ConcurrentProbationryJobTitle" />
+        <AssociationConnector Association="AppModel.FK_Staff_ForeignLanguage" />
+        <AssociationConnector Association="AppModel.FK_Staff_InsurancePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_Staff_InternetAccount" />
+        <AssociationConnector Association="AppModel.FK_Staff_LaborContract" />
+        <AssociationConnector Association="AppModel.FK_Staff_LearningProcess" />
+        <AssociationConnector Association="AppModel.FK_Staff_Phone" />
+        <AssociationConnector Association="AppModel.FK_Staff_ResignInfo" />
+        <AssociationConnector Association="AppModel.FK_Staff_SalaryDecision" />
+        <AssociationConnector Association="AppModel.FK_Staff_SpecializedField" />
+        <AssociationConnector Association="AppModel.FK_Staff_SpecializedSkill" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffAcademicLevel" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffAddress" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffAndFamilyJob" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffBasicInfo" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffCompulsoryInsurance" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffCurrentWorking" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffIdentityCardAndPIT" />
+        <AssociationConnector Association="AppModel.FK_Staff_StaffRecruitmentInfo" />
+        <AssociationConnector Association="AppModel.FK_Staff_Welfare" />
+        <AssociationConnector Association="AppModel.FK_Staff_WorkExperience" />
+        <AssociationConnector Association="AppModel.FK_Staff_WorkingDiary" />
+        <AssociationConnector Association="AppModel.FK_tbl_HRM_Staff_Position_tbl_HRM_Staff" />
+        <AssociationConnector Association="AppModel.FK_tbl_HRM_TimeSheetLog_tbl_HRM_Staff" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_HRM_Staff" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIFT_TimeSheet_tbl_LIST_Staff" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_HRM_Staff" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Vehicle_tbl_HRM_Staff" />
+        <AssociationConnector Association="AppModel.FK_AcademicLevel" />
+        <AssociationConnector Association="AppModel.FK_AcademicRank" />
+        <AssociationConnector Association="AppModel.FK_Degree" />
+        <AssociationConnector Association="AppModel.FK_Frequency_Allowance" />
+        <AssociationConnector Association="AppModel.FK_AnotherSkill" />
+        <AssociationConnector Association="AppModel.FK_AppointDecision_SalaryDecision" />
+        <AssociationConnector Association="AppModel.FK_JobTitleType" />
+        <AssociationConnector Association="AppModel.FK_Bank" />
+        <AssociationConnector Association="AppModel.FK_BankBranch" />
+        <AssociationConnector Association="AppModel.FK_Ethnic_Staff_BasicInfo" />
+        <AssociationConnector Association="AppModel.FK_Nationality_Staff_BasicInfo" />
+        <AssociationConnector Association="AppModel.FK_Religion_Staff_BasicInfo" />
+        <AssociationConnector Association="AppModel.FK_Bounus" />
+        <AssociationConnector Association="AppModel.FK_PayPeriod_BounusOnSalary" />
+        <AssociationConnector Association="AppModel.FK_StaffType" />
+        <AssociationConnector Association="AppModel.FK_CountryOfIssuePassport_Family" />
+        <AssociationConnector Association="AppModel.FK_Family" />
+        <AssociationConnector Association="AppModel.FK_Relative" />
+        <AssociationConnector Association="AppModel.FKTypeOfPassport_Family" />
+        <AssociationConnector Association="AppModel.FK_CertificateType" />
+        <AssociationConnector Association="AppModel.FK_ForeignLanguage" />
+        <AssociationConnector Association="AppModel.FK_ListeningSkill" />
+        <AssociationConnector Association="AppModel.FK_ReadingSkill" />
+        <AssociationConnector Association="AppModel.FK_SpeakingSkill" />
+        <AssociationConnector Association="AppModel.FK_WritingSkill" />
+        <AssociationConnector Association="AppModel.FK_CountryOfIssuePassport_Staff_IdentityCardAndPIT" />
+        <AssociationConnector Association="AppModel.FK_CountryOfIssueVisa_Staff_IdentityCardAndPIT" />
+        <AssociationConnector Association="AppModel.FK_TypeOfPassport_Staff_IdentityCardAndPIT" />
+        <AssociationConnector Association="AppModel.FK_PayPeriod_InsurancePaymentProcess" />
+        <AssociationConnector Association="AppModel.FK_ContractTemplate" />
+        <AssociationConnector Association="AppModel.FK_ContractType" />
+        <AssociationConnector Association="AppModel.FK_LaborContract" />
+        <AssociationConnector Association="AppModel.FK_ParentContract" />
+        <AssociationConnector Association="AppModel.FK_Specialist_LearningProcess" />
+        <AssociationConnector Association="AppModel.FK_RecruitmentForm" />
+        <AssociationConnector Association="AppModel.FK_RecruitmentSource" />
+        <AssociationConnector Association="AppModel.FK_ReasonForResign" />
+        <AssociationConnector Association="AppModel.FK_SpecializedField" />
+        <AssociationConnector Association="AppModel.FK_SpecializedSkill" />
+        <AssociationConnector Association="AppModel.FK_Job" />
+        <AssociationConnector Association="AppModel.FK_TrainingProcess" />
+        <AssociationConnector Association="AppModel.FK_Skill_TrainingProcess" />
+        <AssociationConnector Association="AppModel.FK_Frequency_Welfare" />
+        <AssociationConnector Association="AppModel.FK_Field" />
+        <AssociationConnector Association="AppModel.FK_EventType" />
+        <AssociationConnector Association="AppModel.FK_RoleInEvent" />
+        <AssociationConnector Association="AppModel.FK_tbl_HRM_TimeSheetLog_tbl_OST_OfficeGate" />
+        <AssociationConnector Association="AppModel.FK_Province_Country" />
+        <AssociationConnector Association="AppModel.FK_District_Province" />
+        <AssociationConnector Association="AppModel.FK_Ward_District" />
+        <AssociationConnector Association="AppModel.FK_tbl_MR_EventMarketResearch_tbl_MR_TrackingCompetitor" />
+        <AssociationConnector Association="AppModel.FK_tbl_OST_OfficeGate_tbl_OST_Office" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_BillOfMaterials_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_BillOfMaterialsDetail_tbl_PROD_BillOfMaterials" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_BillOfMaterialsDetail_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_PROD_ItemInVendor_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_PURCHASE_OrderDetail_tbl_PURCHASE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_PURCHASE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_PURCHASE_OrderDetail_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_Order_tbl_SYS_Status" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_OrderDetail_tbl_SALE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDebt_tbl_SALE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDetail_tbl_SALE_Order" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_OrderDetail_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_SALE_OrderDetail_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_SHIP_Vehicle" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_Shipment_tbl_SYS_Status" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDebt_tbl_SHIP_Shipment" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDetail_tbl_SHIP_Shipment" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDebt_tbl_SYS_Status" />
+        <AssociationConnector Association="AppModel.FK_tbl_SHIP_ShipmentDetail_tbl_SYS_Status" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_FormGroup_tbl_SYS_Apps" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_ConfigOption_tbl_SYS_ConfigOption" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_Form_tbl_SYS_Form" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_PermissionList_tbl_SYS_Form" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_Status_tbl_SYS_Status" />
+        <AssociationConnector Association="AppModel.FK_tbl_SYS_Type_tbl_SYS_Type" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_DanhMuc_dbo_tbl_WEB_DanhMuc_IDCha" />
+        <AssociationConnector Association="AppModel.FK_tbl_WEB_BaiViet_tbl_WEB_DanhMuc" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_dbo_tbl_WEB_BaiViet_IDCha" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_BaiViet_IDBaiViet" />
+        <AssociationConnector Association="AppModel.FK_dbo_tbl_WEB_BaiViet_Tag_dbo_tbl_WEB_Tag_IDTag" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_AdjustmentDetail_tbl_WMS_Adjustment" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Adjustment_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Adjustment_tbl_WMS_LicencePlateNumber" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Adjustment_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Adjustment_tbl_WMS_Lot" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Carton_tbl_WMS_CartonGroup" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Item_tbl_WMS_ItemGroup" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInLocation_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInWarehouseConfig_tbl_WMS_Item2" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemUoM_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LicencePlateNumber_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Lot_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListVersionDetail_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptDetail_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_Item" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemGroup_tbl_WMS_ItemGroup" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInLocation_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInLocation_tbl_WMS_Owner" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemInWarehouseConfig_tbl_WMS_Storer" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ItemUoM_tbl_WMS_UoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListDetail_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListVersionDetail_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptDetail_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_ItemUoM" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LicencePlateNumber_tbl_WMS_Owner" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LicencePlateNumber_tbl_WMS_ReceiptPalletization1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_WMS_LicencePlateNumber" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_LicencePlateNumber" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_LicencePlateNumber1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Location_tbl_WMS_Zone" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_Location1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Zone_tbl_WMS_Location" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Zone_tbl_WMS_Location1" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Zone_tbl_WMS_Location2" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Lot_tbl_WMS_Owner" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotAttribute_tbl_WMS_Lot" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_WMS_Lot" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_Lot" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_Lot" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_LotLPNLocation_tbl_WMS_Owner" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListDetail_tbl_WMS_PriceList" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListVersion_tbl_WMS_PriceList" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PriceListVersionDetail_tbl_WMS_PriceListVersion" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_PutawayStrategyDetail_tbl_WMS_PutawayStrategy" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Receipt_tbl_WMS_Owner" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptDetail_tbl_WMS_Receipt" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_ReceiptDetail" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_ReceiptPalletization_tbl_WMS_Storer" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_Transaction_tbl_WMS_Storer" />
+        <AssociationConnector Association="AppModel.FK_tbl_WMS_TaskDispatchStrategyDetail_tbl_WMS_TaskDispatchStrategy" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
