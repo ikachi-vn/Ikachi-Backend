@@ -7,3 +7,5 @@
 *.tt
 API/Connections.config
 packages
+*/Properties/PublishProfiles
+*.user
