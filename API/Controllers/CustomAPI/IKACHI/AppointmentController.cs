@@ -46,7 +46,7 @@ namespace Ikachi_New_Server.Controllers
         }
 
         // GET: api/Appointment/5
-        [ResponseType(typeof(tblSC_Appointment))]
+        [Route("{id:int}", Name = "get_GettblSC_Appointment")]
         public async Task<IHttpActionResult> GettblSC_Appointment(int id)
         {
             tblSC_Appointment tblSC_Appointment = await db.tblSC_Appointment.FindAsync(id);
@@ -59,6 +59,7 @@ namespace Ikachi_New_Server.Controllers
         }
 
         // PUT: api/Appointment/5
+        [Route("{id:int}")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PuttblSC_Appointment(int id, tblSC_Appointment tblSC_Appointment)
         {
@@ -94,11 +95,8 @@ namespace Ikachi_New_Server.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Appointment
-        [Route("api/Appointment")]
-        [HttpPost]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PosttblSC_Appointment(tblSC_Appointment tblSC_Appointment)
+        [Route("")]
+        public IHttpActionResult Post_tblSC_Appointment(tblSC_Appointment tblSC_Appointment)
         {
             if (!ModelState.IsValid)
             {
@@ -106,13 +104,12 @@ namespace Ikachi_New_Server.Controllers
             }
 
             db.tblSC_Appointment.Add(tblSC_Appointment);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = tblSC_Appointment.ID }, tblSC_Appointment);
+            return CreatedAtRoute("get_GettblSC_Appointment", new { id = tblSC_Appointment.ID },new { ID = tblSC_Appointment.ID });
         }
 
-        // DELETE: api/Appointment/5
-        [ResponseType(typeof(tblSC_Appointment))]
+        [Route("{id:int}")]
         public async Task<IHttpActionResult> DeletetblSC_Appointment(int id)
         {
             tblSC_Appointment tblSC_Appointment = await db.tblSC_Appointment.FindAsync(id);
@@ -124,7 +121,7 @@ namespace Ikachi_New_Server.Controllers
             db.tblSC_Appointment.Remove(tblSC_Appointment);
             await db.SaveChangesAsync();
 
-            return Ok(tblSC_Appointment);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

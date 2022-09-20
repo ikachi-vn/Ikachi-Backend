@@ -9,3 +9,4 @@ API/Connections.config
 packages
 */Properties/PublishProfiles
 *.user
+API/logs
